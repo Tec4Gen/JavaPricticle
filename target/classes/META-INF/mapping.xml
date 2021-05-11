@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+                 version="1.0">
+    <description>My First JPA XML Application</description>
+    <package>com.ssu.archive.entity</package>
+
+    <entity class="com.ssu.archive.entity.AbstractPrintedProducts">
+        <table name="AbstractProduct"/>
+        <inheritance strategy="JOINED"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="title"/>
+            <basic name="numberOfPages"/>
+        </attributes>
+    </entity>
+
+    <entity class="com.ssu.archive.entity.Article">
+        <table name="Article"/>
+        <attributes>
+            <basic name="publishingHouse"/>
+        </attributes>
+    </entity>
+
+    <entity class="com.ssu.archive.entity.Author">
+        <table name="Author"/>
+
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="firstName"/>
+            <basic name="lastName"/>
+        </attributes>
+    </entity>
+
+    <entity class="com.ssu.archive.entity.Book">
+        <table name="Book"/>
+
+        <attributes>
+            <basic name="city"/>
+            <basic name="ISBN"/>
+            <basic name="publishingHouse"/>
+        </attributes>
+    </entity>
+
+    <entity class="com.ssu.archive.entity.Newspaper">
+        <table name="Newspaper"/>
+
+        <attributes>
+            <basic name="city"/>
+            <basic name="ISSN"/>
+            <basic name="publishingHouse"/>
+        </attributes>
+    </entity>
+
+    <entity class="com.ssu.archive.entity.Patent">
+        <table name="Patent"/>
+        <attributes>
+            <basic name="country"/>
+            <basic name="registrationNumber"/>
+        </attributes>
+    </entity>
+
+    <entity class="com.ssu.archive.entity.User">
+        <table name="User_Account"/>
+
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="firstName"/>
+            <basic name="lastName"/>
+            <basic name="hashPassword"/>
+            <basic name="login"/>
+        </attributes>
+    </entity>
+
+</entity-mappings>
