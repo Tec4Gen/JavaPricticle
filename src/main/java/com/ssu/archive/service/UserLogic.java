@@ -13,7 +13,7 @@ public class UserLogic {
 
     public boolean registration(UserAccount userAccount) { return _userDao.registration(userAccount); }
 
-    public boolean authorization(String login, byte[] password) {
+    public boolean authorization(String login, String password) {
         return _userDao.auhtorization(login,password);
     }
 }

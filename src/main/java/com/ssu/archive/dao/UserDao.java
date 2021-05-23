@@ -51,7 +51,30 @@ public class UserDao {
         }
     }
 
-    public boolean auhtorization(String login, byte[] password) {
-        return false;
+    public boolean auhtorization(String login, String password) {
+        Session session = sessionFactory.openSession();
+
+        try {
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<UserAccount> query = builder.createQuery(UserAccount.class);
+
+            Root<UserAccount> variableRoot = query.from(UserAccount.class);
+
+
+            query
+                    .select(variableRoot)
+                    .where(builder.equal(variableRoot.get("login"), login),builder.equal(variableRoot.get("hashPassword"), password));
+
+            List<UserAccount> resultList = em.createQuery(query).getResultList();
+
+            if (resultList.isEmpty()) {
+                return false;
+            } else {
+                return true;
+            }
+
+        } finally {
+            session.close();
+        }
     }
 }

@@ -12,13 +12,13 @@ public class UserAccount {
     private String login;
     private String firstName;
     private String lastName;
-    private byte[] hashPassword;
+    private String hashPassword;
 
-    public byte[] getHashPassword() {
+    public String getHashPassword() {
         return hashPassword;
     }
 
-    public void setHashPassword(byte[] hashPassword) {
+    public void setHashPassword(String hashPassword) {
         this.hashPassword = hashPassword;
     }
 
