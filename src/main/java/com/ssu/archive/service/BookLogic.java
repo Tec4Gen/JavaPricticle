@@ -13,13 +13,13 @@ public class BookLogic {
         this.bookDao = bookDao;
     }
 
-    public Book getById(int id) { return bookDao.getById(id); }
+    public Book getById(int id)  throws Exception  { return bookDao.getById(id); }
 
-    public boolean add(Book book) { return bookDao.add(book); }
+    public void add(Book book) {  bookDao.add(book); }
 
-    public boolean update(Book book){ return bookDao.update(book); }
+    public void update(Book book){  bookDao.update(book); }
 
-    public boolean delete(int id){ return bookDao.delete(id); }
+    public void delete(Book book){ bookDao.delete(book); }
 
     public List<Book> getAll() { return bookDao.getAll(); }
 }

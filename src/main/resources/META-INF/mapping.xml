@@ -22,7 +22,7 @@
         <table name="Article"/>
         <attributes>
             <basic name="publishingHouse"/>
-        </attributes>.....
+        </attributes>
     </entity>
 
     <entity class="com.ssu.archive.entity.Author">
@@ -65,7 +65,7 @@
         </attributes>
     </entity>
 
-    <entity class="com.ssu.archive.entity.User">
+    <entity class="com.ssu.archive.entity.UserAccount">
         <table name="User_Account"/>
 
         <attributes>

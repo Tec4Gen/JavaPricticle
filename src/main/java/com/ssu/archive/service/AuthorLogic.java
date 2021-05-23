@@ -15,13 +15,13 @@ public class AuthorLogic {
         this.authorDao = authorDao;
     }
 
-    public Author getById(int id) { return authorDao.getById(id); }
+    public Author getById(int id) throws Exception { return authorDao.getById(id); }
 
-    public boolean add(Author author) { return authorDao.add(author); }
+    public void add(Author author) { authorDao.add(author); }
 
-    public boolean update(Author author){ return authorDao.update(author); }
+    public void update(Author author){ authorDao.update(author); }
 
-    public boolean delete(int id){ return authorDao.delete(id); }
+    public void delete(Author author){ authorDao.delete(author); }
 
     public List<Author> getAll() { return authorDao.getAll(); }
 }

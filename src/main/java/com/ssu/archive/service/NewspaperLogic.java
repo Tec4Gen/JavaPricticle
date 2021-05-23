@@ -14,13 +14,13 @@ public class NewspaperLogic {
     }
 
 
-    public Newspaper getById(int id) { return newspaperDao.getById(id); }
+    public Newspaper getById(int id) throws Exception { return newspaperDao.getById(id); }
 
-    public boolean add(Newspaper newspaper) { return newspaperDao.add(newspaper); }
+    public void add(Newspaper newspaper) { newspaperDao.add(newspaper); }
 
-    public boolean update(Newspaper newspaper){ return newspaperDao.update(newspaper); }
+    public void update(Newspaper newspaper){ newspaperDao.update(newspaper); }
 
-    public boolean delete(int id){ return newspaperDao.delete(id); }
+    public void delete(Newspaper newspaper){ newspaperDao.delete(newspaper); }
 
     public List<Newspaper> getAll() { return newspaperDao.getAll(); }
 }

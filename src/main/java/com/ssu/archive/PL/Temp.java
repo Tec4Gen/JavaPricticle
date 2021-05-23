@@ -1,29 +1,18 @@
 package com.ssu.archive.PL;
 
-import  com.ssu.archive.entity.User;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import com.ssu.archive.dao.UserDao;
+import com.ssu.archive.entity.UserAccount;
+import com.ssu.archive.service.UserLogic;
 
 public class Temp {
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.ssu.archive");
-        EntityManager em = entityManagerFactory.createEntityManager();
+        UserLogic a = new UserLogic(new UserDao());
+        var u = new UserAccount();
 
-        User client = new User();
-        client.setFirstName("Boy");
-        client.setLastName("Next door");
-        client.setLogin("123");
-        client.setHashPassword(new byte[] {1,4,3});
-
-        em.getTransaction().begin();
-
-        em.persist(client);
-
-        em.getTransaction().commit();
-
-        em.close();
-        entityManagerFactory.close();
+        u.setLogin("125");
+        u.setFirstName("123123");
+        u.setLastName("12312");
+        u.setHashPassword(new byte[] {1,2,2});
+        a.registration(u);
     }
 }

@@ -12,13 +12,13 @@ public class PatentLogic {
         this.patentDao = paperDao;
     }
 
-    public Patent getById(int id) { return patentDao.getById(id); }
+    public Patent getById(int id) throws Exception { return patentDao.getById(id); }
 
-    public boolean add(Patent newspaper) { return patentDao.add(newspaper); }
+    public void add(Patent newspaper) { patentDao.add(newspaper); }
 
-    public boolean update(Patent newspaper){ return patentDao.update(newspaper); }
+    public void update(Patent newspaper){ patentDao.update(newspaper); }
 
-    public boolean delete(int id){ return patentDao.delete(id); }
+    public void delete(Patent newspaper){ patentDao.delete(newspaper); }
 
     public List<Patent> getAll() { return patentDao.getAll(); }
 }

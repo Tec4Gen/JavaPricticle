@@ -13,13 +13,13 @@ public class ArticleLogic {
         this.articleDao = articleDao;
     }
 
-    public Article getById(int id) { return articleDao.getById(id); }
+    public Article getById(int id) throws Exception{ return articleDao.getById(id); }
 
-    public boolean add(Article article) { return articleDao.add(article); }
+    public void add(Article article) {  articleDao.add(article); }
 
-    public boolean update(Article article){ return articleDao.update(article); }
+    public void update(Article article){  articleDao.update(article); }
 
-    public boolean delete(int id){ return articleDao.delete(id); }
+    public void delete(Article article){ articleDao.delete(article); }
 
     public List<Article> getAll() { return articleDao.getAll(); }
 
