@@ -4,6 +4,7 @@ import com.ssu.archive.entity.UserAccount;
 import com.ssu.archive.utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -51,7 +52,7 @@ public class UserDao {
         }
     }
 
-    public boolean auhtorization(String login, String password) {
+    public boolean authorization(String login, String password) {
         Session session = sessionFactory.openSession();
 
         try {
@@ -63,18 +64,25 @@ public class UserDao {
 
             query
                     .select(variableRoot)
-                    .where(builder.equal(variableRoot.get("login"), login),builder.equal(variableRoot.get("hashPassword"), password));
+                    .where(builder.equal(variableRoot.get("login"), login));
 
             List<UserAccount> resultList = em.createQuery(query).getResultList();
-
-            if (resultList.isEmpty()) {
-                return false;
-            } else {
-                return true;
+            for (var itVar : resultList)
+            {
+                if(BCrypt.checkpw(password, itVar.getHashPassword())) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
-
-        } finally {
+            return false;
+        } catch (Exception ex) {
+            return false;
+        }
+        finally {
             session.close();
+
         }
     }
 }

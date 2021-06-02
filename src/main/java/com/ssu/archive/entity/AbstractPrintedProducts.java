@@ -1,11 +1,15 @@
 package com.ssu.archive.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("AbstractPrintedProducts")
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public abstract class AbstractPrintedProducts {
 
     @Id
@@ -15,7 +19,7 @@ public abstract class AbstractPrintedProducts {
     private String title;
     private int numberOfPages;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     // Authors will be embedded in Book documents
     private List<Author> author;
 

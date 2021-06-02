@@ -1,5 +1,7 @@
 package com.ssu.archive.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.mapping.Set;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import java.util.List;
 
 @DiscriminatorValue("Author")
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Author {
 
     @Id
@@ -17,7 +20,7 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @ManyToMany(mappedBy = "author")
+    @ManyToMany(mappedBy = "author", fetch = FetchType.EAGER)
     private List<AbstractPrintedProducts> listProduct;
 
     public List<AbstractPrintedProducts> getListProduct() {
